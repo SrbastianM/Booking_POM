@@ -1,8 +1,9 @@
 package steps;
 
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import pageobjects.LoginPage;
+
+import java.time.Duration;
 
 public class LoginStep {
     LoginPage loginPage = new LoginPage();
@@ -18,18 +19,16 @@ public class LoginStep {
     }
 
     @Step
-    public void enterEmailAddress() {
-        loginPage.getDriver().findElement(loginPage.getEMAIL_INPUT_FIELD()).sendKeys("srodriguezdev.l@gmail.com");
+    public void enterEmailAddress(String email) {
+        loginPage.getDriver().findElement(loginPage.getEMAIL_INPUT_FIELD()).sendKeys(email);
+        loginPage.getDriver().findElement(loginPage.getBTN_CONTINUE()).click();
     }
 
     @Step
-    public void enterPasswordField() {
-        loginPage.getDriver().findElement(loginPage.getTXT_FIELD_PASSWORD()).sendKeys("123asdfA");
-    }
-
-    @Step
-    public void confirmPasswordField() {
-        loginPage.getDriver().findElement(loginPage.getTXT_FIELD_CONFIRM_PASSWORD()).sendKeys("123asdfA");
+    public void enterPasswordField(String password) {
+        loginPage.getDriver().findElement(loginPage.getTXT_FIELD_PASSWORD()).sendKeys(password);
+        loginPage.getDriver().findElement(loginPage.getBTN_LOGIN_SIGN_IN()).click();
+        loginPage.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
     }
 
     @Step
