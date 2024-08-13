@@ -4,10 +4,12 @@ import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
-@DefaultUrl("https://www.booking.com/index.en-gb.html?aid=2311236;label=en-co-booking-desktop-5BWS5rR2KnBIiXbrHH1NNAS652796016468:pl:ta:p1:p2:ac:ap:neg:fi:tikwd-65526620:lp20202:li:dec:dm;ws=&gclid=Cj0KCQjw-5y1BhC-ARIsAAM_oKmLj7hcmfX30L2JuOzm6YW10--vbiHj5iPzMkopN3OJ_Uf1DbGNlAMaAmG-EALw_wcB")
+@DefaultUrl("https://www.booking.com/index.html?lang=en-us&soz=1&lang_changed=1")
 public class LoginPage extends PageObject {
+    // If booking want a check the robot
+    By BTN_PRESS_AND_HOLD = By.xpath("p[@class='toJYxZLwQupRvMm' and text()='Press and hold']");
 
-
+    // Login ->
     By BTN_CONTINUE = By.xpath("//span[@class='TKez1AxowpXXm_eCa_Bz'][contains(.,'Continue with email')]");
     By BTN_SIGN_IN = By.xpath("(//span[@class='eed450ee2f'][contains(.,'Sign in')])[1]");
     By BTN_LOGIN_SIGN_IN = By.xpath("//button[@type='submit'][contains(.,'Sign in')]");
@@ -15,8 +17,15 @@ public class LoginPage extends PageObject {
     By EMAIL_INPUT_FIELD = By.xpath("//input[contains(@class,'LkmBPiMnXBfMgmQ98uiP')]");
     By TXT_FIELD_PASSWORD = By.xpath("//input[@placeholder='Enter your password']");
     By TXT_FIELD_CONFIRM_PASSWORD = By.xpath("//input[contains(@name,'confirmed_password')]");
-    By TXT_SPAN_HOME_PAGE = By.xpath("//span[@data-testid='herobanner-title1'][contains(.,'Find your next stay')]");
+    By TXT_SPAN_HOME_PAGE = By.xpath("//div[@class='d3c6350bdd eb02592978 ad0b39688b'][contains(.,'Offers')]");
 
+    public By getBTN_PRESS_AND_HOLD() {
+        return BTN_PRESS_AND_HOLD;
+    }
+
+    public void setBTN_PRESS_AND_HOLD(By BTN_PRESS_AND_HOLD) {
+        this.BTN_PRESS_AND_HOLD = BTN_PRESS_AND_HOLD;
+    }
     public By getEMAIL_INPUT_FIELD() {
         return EMAIL_INPUT_FIELD;
     }
